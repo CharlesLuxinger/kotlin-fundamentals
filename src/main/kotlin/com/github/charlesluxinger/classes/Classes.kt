@@ -55,6 +55,7 @@ fun topLevel() {
     val local = "Local 1 text"
     println("$objectConstant $local")
 }
+
 class Something {
     var instanceVariable = "Some text!"
 
@@ -66,4 +67,66 @@ class Something {
         val local = "Local 2 text"
         println("$constantClass $objectConstant $local $instanceVariable")
     }
+}
+
+class Movie1 {
+    val name: String
+    val year: Int
+    val genre: String
+
+    constructor(name: String, year: Int, genre: String) {
+        this.name = name;
+        this.year = year;
+        this.genre = genre;
+    }
+
+}
+
+class Movie2(val name: String, val year: Int, val genre: String) {}
+
+class Movie3(name: String, year: Int, genre: String) {
+    val name: String
+    val year: Int
+    val genre: String
+
+    init {
+        this.name = name;
+        this.year = year;
+        this.genre = genre;
+    }
+
+}
+
+class Person {
+
+    var name: String
+        get() = "My name is $field"
+        set(value) {
+            field = value.takeIf { value.isEmpty() } ?: "Anonymous"
+        }
+
+    constructor(name: String) {
+        this.name = name;
+    }
+
+}
+
+class Product(val name: String, val price: Double, val discount: Double, val enabled: Boolean) {
+
+    val disable: Boolean get() = !enabled
+    val priceWithDiscount: Double get() = price * (1 - discount)
+}
+
+enum class Week1 {
+    SUNDAY, MONDAY, THURSDAY, WEDNESDAY, TUESDAY, FRIDAY, SATURDAY
+}
+
+enum class Week2(val id: Int, val dayName: String, val workday: Boolean) {
+    SUNDAY(1, "Sunday", false),
+    MONDAY(2, "Monday", true),
+    THURSDAY(3, "Thursday", true),
+    WEDNESDAY(4, "Wednesday", true),
+    TUESDAY(5, "Tuesday", true),
+    FRIDAY(6, "Friday", true),
+    SATURDAY(7, "Saturday", false)
 }
