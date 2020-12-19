@@ -4,7 +4,7 @@ package com.github.charlesluxinger.bytebank.model
  * @author Charles Luxinger
  * @version 1.0.0 17/12/20
  */
-class Account(val ownerName: String, val number: Int, balance: Double = 0.0) {
+abstract class Account(val ownerName: String, val number: Int, balance: Double = 0.0) {
     var balance = balance
         private set
 
@@ -13,7 +13,7 @@ class Account(val ownerName: String, val number: Int, balance: Double = 0.0) {
         return true
     }
 
-    fun withdraw(value: Double): Boolean {
+    open fun withdraw(value: Double): Boolean {
         if (balance >= value) {
             this.balance -= value
             return true
