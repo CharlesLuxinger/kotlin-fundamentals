@@ -4,7 +4,16 @@ package com.github.charlesluxinger.bytebank.model
  * @author Charles Luxinger
  * @version 1.0.0 17/12/20
  */
-abstract class Account(val ownerName: String, val number: Int, balance: Double = 0.0) {
+abstract class Account(val consumer: Consumer, val number: Int, balance: Double = 0.0) {
+    companion object {
+        var amountCreated = 0
+            private set
+    }
+
+    init {
+        amountCreated++
+    }
+
     var balance = balance
         private set
 
