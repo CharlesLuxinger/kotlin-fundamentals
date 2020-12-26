@@ -11,14 +11,20 @@ fun main() {
     val b3 = Book("Memórias Póstumas de Brás Cubas","Machado de Assis",1881)
     val b4 = Book("Iracema","José de Alencar", 1865, "Editora B")
 
-    val books = mutableListOf(b1, b2, b3, b4)
-
-    books.joinToString("\n") { " - ${it.title} of ${it.author}" }
+    val books = listOf(b1, b2, b3, b4)
 
     books.sortedBy { it.title }
     books.sorted()
 
     books.filter { it.publisherYear > 1950 }
+
+    books.groupBy { it.publisher ?: "Undefined publisher" }
+         .forEach { (p, b) -> println("$p: ${join(b)}") }
+
+}
+
+private fun join(books: List<Book>) {
+    books.joinToString("\n") { " - ${it.title} of ${it.author}" }
 }
 
 data class Book (
