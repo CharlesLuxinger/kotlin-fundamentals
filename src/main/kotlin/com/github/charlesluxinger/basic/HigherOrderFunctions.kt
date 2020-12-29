@@ -11,6 +11,14 @@ fun main() {
 
     val bookToUpperCase2 = Book("Grande Sertão: Veredas", "João Guimarães Rosa", 1956)
         .let { book -> " - ${book.title} of ${book.author}".toUpperCase() }
+        .let(::println)
+
+    val bookToUpperCase3 = Book("Grande Sertão: Veredas", "João Guimarães Rosa", 1956)
+        .run { println(" - $title of $author".toUpperCase()) }
+    
+    with(b1) {
+        println(" - $title of $author".toUpperCase())
+    }
 
     calculator(1, 2) { println(it) }
 }
